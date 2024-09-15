@@ -21,13 +21,13 @@ It's good practice to store the settings in `config.py` and import the `settings
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    app_url: str
-	database_url: str
-	session_key: str
-	github_client_id: str
-	github_client_secret: str
+  app_url: str
+  database_url: str
+  session_key: str
+  github_client_id: str
+  github_client_secret: str
 
-    model_config = SettingsConfigDict(env_file=".env")
+  model_config = SettingsConfigDict(env_file=".env")
 
 settings = Settings()
 ```
@@ -82,14 +82,14 @@ JinjaX components are just Jinja templates with a header. If no variables are us
 {#def title, include_footer=True #}
 
 <header>
-	<h1>{{ title }}</h1>
+  <h1>{{ title }}</h1>
 </header>
 
 {{ content }}
 
 {% if include_footer %}
 <footer>
-	copyright 2024
+  copyright 2024
 </footer>
 {% endif %}
 ```
@@ -97,7 +97,7 @@ This is equivalent to doing this in Jinja:
 ```html
 
 <header>
-	<h1>{{ title }}</h1>
+  <h1>{{ title }}</h1>
 <header>
 
 {% block content %}
@@ -105,7 +105,7 @@ This is equivalent to doing this in Jinja:
 
 {% if include_footer | default(true) %}
 <footer>
-	copyright 2024
+  copyright 2024
 </footer>
 {% endif %}
 ```
@@ -117,7 +117,7 @@ This is equivalent to doing this in Jinja:
 When calling components the react-like syntax becomes visible. Continuing the layout example from above we can call the `Layout` component like so:
 ```html
 <Layout title="My title">
-	<main>My cool page</main>
+  <main>My cool page</main>
 </Layout>
 ```
 - The capital letter of the HTML element signals that we want to use a JinjaX component. It needs to be part of the folder that was initialized above.
@@ -138,17 +138,17 @@ This syntax replaces all major structural statements in Jinja: `extends`, `block
 
 {% block content -%}
 <div>
-	<h2>Hello {{ mistery or "World?" }}</h2>
-	<div>
-		{% call card_macro(div="So verbose") %}
-			{% for product in products %}
-				{{ another_macro(product) }}
-			{% endfor %}
-		{% endcall %}
-	</div>
+  <h2>Hello {{ mistery or "World?" }}</h2>
+  <div>
+    {% call card_macro(div="So verbose") %}
+      {% for product in products %}
+        {{ another_macro(product) }}
+      {% endfor %}
+    {% endcall %}
+  </div>
 </div>
 {% with items=products %}
-	{% include "snippets/pagination.html" %}
+  {% include "snippets/pagination.html" %}
 {% endwith %}
 {%- endblock %}
 ```
@@ -157,17 +157,17 @@ This syntax replaces all major structural statements in Jinja: `extends`, `block
 {#def products, msg="World!" #}
 
 <Layout title="My title">
-	<div>
-		<h2>Hello, {{ msg }}</h2>
-		<div>
-			<Card div="So clean">
-				{% for product in products %}
-					<Product product={{ product }} />
-				{% endfor %}
-			</Card>
-		</div>
-	</div>
-	<Paginator items={{ products }} />
+  <div>
+    <h2>Hello, {{ msg }}</h2>
+    <div>
+      <Card div="So clean">
+        {% for product in products %}
+          <Product product={{ product }} />
+        {% endfor %}
+      </Card>
+    </div>
+  </div>
+  <Paginator items={{ products }} />
 </Layout>
 ```
 All the structural statements are replaced by component calls with attributes and the content slot. It's much easier on the eyes and
@@ -217,45 +217,45 @@ PicoCSS also features many components that add a bit of syntax on top of native 
 #### Validation
 ```html
 <input
-	type="text"
-	name="valid"
-	value="Valid"
-	aria-invalid="false"
+  type="text"
+  name="valid"
+  value="Valid"
+  aria-invalid="false"
 >
 
 <input
-	type="text"
-	name="invalid"
-	value="Invalid"
-	aria-invalid="true"
+  type="text"
+  name="invalid"
+  value="Invalid"
+  aria-invalid="true"
 >
 ```
 #### Navigation
 ```html
 <nav>
-	<ul>
-		<li><strong>Acme Corp</strong></li>
-	</ul>
-	<ul>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Services</a></li>
-		<li><a href="#">Products</a></li>
-	</ul>
+  <ul>
+    <li><strong>Acme Corp</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Products</a></li>
+  </ul>
 </nav>
 ```
 #### Cards
 ```html
 <article>
-	<header>Card Title</header>
-	<p>Card content goes here.</p>
-	<footer>Card footer</footer>
+  <header>Card Title</header>
+  <p>Card content goes here.</p>
+  <footer>Card footer</footer>
 </article>
 ```
 #### Accordions
 ```html
 <details>
-	<summary>Accordion Title</summary>
-	<p>Accordion content goes here.</p>
+  <summary>Accordion Title</summary>
+  <p>Accordion content goes here.</p>
 </details>
 ```
 #### Progress
@@ -270,52 +270,52 @@ PicoCSS also features many components that add a bit of syntax on top of native 
 ```html
 <button onclick="modal.showModal()">Open Modal</button>
 <dialog id="modal">
-	<article>
-		<header>
-			<button aria-label="Close" rel="prev" onclick="modal.close()"></button>
-			Modal Title
-		</header>
-		<p>Modal content goes here.</p>
-	</article>
+  <article>
+    <header>
+      <button aria-label="Close" rel="prev" onclick="modal.close()"></button>
+      Modal Title
+    </header>
+    <p>Modal content goes here.</p>
+  </article>
 </dialog>
 ```
 #### Grid
 ```html
 <div class="grid">
-	<div>Grid item 1</div>
-	<div>Grid item 2</div>
-	<div>Grid item 3</div>
+  <div>Grid item 1</div>
+  <div>Grid item 2</div>
+  <div>Grid item 3</div>
 </div>
 ```
 #### Search
 ```html
 <input
-	type="search"
-	name="search"
-	placeholder="Search"
-	aria-label="Search"
+  type="search"
+  name="search"
+  placeholder="Search"
+  aria-label="Search"
 />
 ```
 #### Dropdown
 ```html
 <!-- Dropdown -->
 <details class="dropdown">
-	<summary>Dropdown</summary>
-	<ul>
-		<li><a href="#">Solid</a></li>
-		<li><a href="#">Liquid</a></li>
-		<li><a href="#">Gas</a></li>
-		<li><a href="#">Plasma</a></li>
-	</ul>
+  <summary>Dropdown</summary>
+  <ul>
+    <li><a href="#">Solid</a></li>
+    <li><a href="#">Liquid</a></li>
+    <li><a href="#">Gas</a></li>
+    <li><a href="#">Plasma</a></li>
+  </ul>
 </details>
 
 <!-- Form Element -->
 <select name="select" aria-label="Select" required>
-	<option selected disabled value="">Select</option>
-	<option>Solid</option>
-	<option>Liquid</option>
-	<option>Gas</option>
-	<option>Plasma</option>false
+  <option selected disabled value="">Select</option>
+  <option>Solid</option>
+  <option>Liquid</option>
+  <option>Gas</option>
+  <option>Plasma</option>false
 </select>
 ```
 #### Loading
@@ -327,14 +327,14 @@ PicoCSS also features many components that add a bit of syntax on top of native 
 #### Groups
 ```html
 <form>
-	<fieldset role="group">
-		<input
-			type="email"
-			name="email"
-			placeholder="Enter your email"
-			autocomplete="email"
-		/>
-		<input type="submit" value="Subscribe" />
-	</fieldset>
+  <fieldset role="group">
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter your email"
+      autocomplete="email"
+    />
+    <input type="submit" value="Subscribe" />
+  </fieldset>
 </form>
 ```
