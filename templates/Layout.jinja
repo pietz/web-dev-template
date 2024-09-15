@@ -1,0 +1,30 @@
+{#def title, logged_in=False #}
+
+<Base>
+
+<header class="container">
+    <nav>
+        <ul>
+            <li><strong>{{ title }}</strong></li>
+        </ul>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/app">Dashboard</a></li>
+            {% if logged_in %}
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/github/login">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    {{ content }}
+</main>
+
+{# <footer class="container">
+    <p>Reranq &copy; 2024</p>
+</footer> #}
+
+</Base>
